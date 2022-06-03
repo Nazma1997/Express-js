@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+
+    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <title>create new poll</title>
+  </head>
+  <body >
+
+    <div class="container">
+      <div class="row">
+           <div class="col-md-6 offset-md-3 my-5" >
+                  <div class="card card-body">
+                        <h4>Create A Poll</h4>
+                         <form action="/create" method="POST">
+                            <div class="from-group">
+                               <label for="title">Enter Title</label>
+                               <input type="text" name="title" id="title" class="form-control">
+                           </div>
+                           <div class="from-group">
+                              <label for="description">Enter Description</label>
+                              <textarea name="description" id="description" class="form-control" ></textarea>
+                          </div>
+                          <div id="options">
+                              <p>Enter Your Options</p>
+                              <div class="from-group">
+                                <input type="text" name="options" class="from-control mb-2" placeholder="Option-1">
+                              </div>
+                             
+                          </div>
+                         </form> 
+                        
+                         <button   class="btn btn-secondary mb-3" id="addOption">
+                              Add More Option  
+                         </button>
+                         <input  type="submit" class="btn btn-primary" value="Create Poll">   
+                  </div>
+                 
+           </div>
+
+      </div>
+    </div>
+     
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+          let options = document.getElementById('options');
+          let addOption = document.getElementById('addOption');
+          let currentOptionNumber = 1;
+
+          addOption.addEventListener('click', function(e){
+            e.preventDefault();
+            let option = createOption();
+            options.appendChild(option);
+          })
+          
+          function createOption(){
+            let div = document.createElement('div');
+             div.className = 'form-group';
+
+             let input = document.createElement('input');
+             input.text = 'text';
+             input.name = 'Options' ;
+             input.placeholder = 'Option-' + currentOptionNumber++;
+             input.className = 'form-control mb-3';
+
+
+             div.appendChild(input);
+             return div;
+          }
+
+    </script>
+  </body>
+</html>
